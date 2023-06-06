@@ -1,4 +1,4 @@
-// LeetCode Link:
+// LeetCode Link: https://leetcode.com/problems/find-the-duplicate-number/
 // ---------------------------------------------------------------------
 
 /* Approach:

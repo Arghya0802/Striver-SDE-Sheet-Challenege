@@ -8,5 +8,34 @@
 4. To find the length of the current subarray containing unique characters we can use the formula, (start - end + 1) and always update our ans with the maximum of (ans, start - end + 1).
 */
 
+#include <bits/stdc++.h> 
+
+int uniqueSubstrings(string &input)
+{
+    int n = input.size() ;
+
+    int end = 0 ;  int maxCnt = 0 ;
+
+    unordered_set<char> hashSet ;
+
+    for(int start = 0 ; start < n ; start++)
+    {
+        char accept = input[start] ; 
+
+        while(end <= start && hashSet.find(accept) != hashSet.end() ) 
+        {
+            char discard = input[end] ; end++ ;
+
+            hashSet.erase(discard) ;
+        }
+        
+        hashSet.insert(accept) ;
+        
+        maxCnt = max(maxCnt , start - end + 1) ;
+    }
+
+    return maxCnt ;
+}
+
 // Time Complexity:  O(N)
 // Space Complexity: O(N)

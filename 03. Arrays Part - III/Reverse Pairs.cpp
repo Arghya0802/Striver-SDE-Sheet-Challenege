@@ -11,5 +11,72 @@
 7. And the count we would get by adding (right - (mid + 1)) as (mid + 1) is the starting point of our right array.
 */
 
+#include <bits/stdc++.h> 
+using ll = long long int ;
+
+void merge(int low , int mid , int high , vector<int> &nums)
+{
+	int left = low ; int right = mid + 1 ;
+	
+	vector<int> temp ;
+	
+	while(left <= mid && right <= high)
+	{
+		if(nums[left] < nums[right])
+		{
+			temp.push_back(nums[left]) ;  left++ ;
+		}	
+
+		else
+		{
+			temp.push_back(nums[right]) ;  right++ ;
+		}
+	}	
+
+	for(; left <= mid ; left++)  temp.push_back(nums[left]) ;
+	
+	for(; right <= high ; right++)  temp.push_back(nums[right]) ;
+
+	for(int i = low ; i <= high ; i++)  nums[i] = temp[i - low] ;
+	
+	return ;
+}
+
+int countReversePairs(int low , int mid , int high , vector<int> &nums)
+{
+	int ans = 0 ;  int right = mid + 1 ;
+	
+	for(int i = low ; i <= mid ; i++)
+	{	
+		while(right <= high && (ll) nums[i] > (ll) 2 * nums[right] )  right++ ;
+
+		ans += (right - (mid + 1) ) ;
+	}	
+
+	return ans ;
+}
+
+int mergeSort(int low , int high , vector<int> &nums)
+{
+	if(low >= high)  return 0 ;
+
+	int mid = low + (high - low) / 2 ;  int cnt = 0 ;
+
+	cnt += mergeSort(low , mid , nums) ;
+
+	cnt += mergeSort(mid + 1 , high , nums) ;
+
+	cnt += countReversePairs(low , mid , high , nums) ;
+
+	merge(low , mid , high , nums) ;
+
+	return cnt ;	
+}
+
+int reversePairs(vector<int> &arr, int n)
+{
+	return mergeSort(0 , n - 1 , arr) ;		
+}
+
 // Time Complexity:  O(2 * N * Log N)
 // Space Complexity: O(N)

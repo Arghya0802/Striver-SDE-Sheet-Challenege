@@ -10,6 +10,33 @@
 6. Lastly, make sure we store the first occurrence of the index of any prefixSum as we are trying to calculate the maximum possible length.
 */
 
+#include <bits/stdc++.h>
+
+int LongestSubsetWithZeroSum(vector <int> &arr) 
+{
+  int n = arr.size() ;
+
+  int ans = 0 ;  int prefixSum = 0 ;
+
+  unordered_map<int , int> hashMap ;  hashMap[0] = -1 ;
+
+  for(int i = 0 ; i < n ; i++)
+  {
+      prefixSum += arr[i] ;
+
+      if(hashMap.find(prefixSum) != hashMap.end() )  
+      {
+          int len = i - hashMap[prefixSum] ;
+
+          ans = max(ans , len) ;
+      }
+
+      else  hashMap[prefixSum] = i ;
+  }
+
+
+  return ans ;
+}
 
 // Time Complexity:  O(N)
 // Space Complexity: O(N)

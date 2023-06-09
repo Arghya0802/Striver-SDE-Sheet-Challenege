@@ -7,5 +7,29 @@
 3. We just need to increment our ans by hashMap[prefXOR ^ K] if we have it inside our hashMap and increment the count of hashMap[prefXOR] by 1 at every stage.
 */
 
+#include <bits/stdc++.h>
+
+int subarraysXor(vector<int> &arr, int k)
+{
+    int n = arr.size() ;
+
+    int ans = 0 ;  int prefXOR = 0 ;
+
+    unordered_map<int , int> hashMap ;  hashMap[0] = 1 ;
+
+    for(int i = 0 ; i < n ; i++)
+    {
+        prefXOR ^= arr[i] ;
+
+        int key = prefXOR ^ k ;
+
+        if(hashMap.find(key) != hashMap.end() )  ans += hashMap[key] ;
+
+        hashMap[prefXOR] += 1 ;
+    }
+
+    return ans ;
+}
+
 // Time Complexity:  O(N)
 // Space Complexity: O(N)

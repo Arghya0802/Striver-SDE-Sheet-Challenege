@@ -48,3 +48,6 @@ LinkedListNode<int> *reverseLinkedList(LinkedListNode<int> *head)
     return prev ;
 
 }
+
+// Time Complexity:  O(N)
+// Space Complexity: O(1)

@@ -13,5 +13,45 @@ Approach 2[ [Without using Extra Space]:
 4. At the end, we return rotate which is the head of our rotated linkedList.
 */
 
+
+/**
+ * Definition for singly-linked list.
+ * class Node {
+ * public:
+ *     int data;
+ *     Node *next;
+ *     Node() : data(0), next(nullptr) {}
+ *     Node(int x) : data(x), next(nullptr) {}
+ *     Node(int x, Node *next) : data(x), next(next) {}
+ * };
+ */
+
+Node *rotate(Node *head, int k) 
+{
+     if(!head || !head -> next || k == 0)  return head ;
+
+     Node *p = head ;  int n = 1 ;
+
+     while(p -> next != NULL)
+     {
+          p = p -> next ; n++ ;
+     }     
+
+     p -> next = head ; // Make the LinkedList Circular
+
+     k %= n ; // We decrement K to K % N
+
+     int K = n - k ; // We leftRotate (n - k) elements 
+
+     p = head ;
+
+     for(int i = 0 ; i < K - 1 ; i++)  p = p -> next ;
+
+     Node *rotHead = p -> next ;   p -> next = NULL ;
+
+     return rotHead ;
+}
+
+
 // Time Complexity:  O(N)
-// Space Complexity: O(N)
+// Space Complexity: O(1)

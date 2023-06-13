@@ -15,5 +15,62 @@ Here, p is the old node while copy is the new node we have just created.
 5. At the end, we return dummy -> next as usual.
 */
 
+#include <bits/stdc++.h>
+
+/*************************************************************
+
+    Following is the LinkedListNode class structure
+
+    template <typename T>   
+    class LinkedListNode
+    {
+        public:
+        T data;
+        LinkedListNode<T> *next;
+        LinkedListNode<T> *random;
+        LinkedListNode(T data)
+        {
+            this->data = data;
+            this->next = NULL;
+        }
+    };
+
+*************************************************************/
+
+LinkedListNode<int> *cloneRandomList(LinkedListNode<int> *head)
+{
+    unordered_map<LinkedListNode <int> *, LinkedListNode <int> *> nodesMap ;
+
+    LinkedListNode <int> *p = head ;
+
+    while(p != NULL)
+    {
+        LinkedListNode <int> *copy = new LinkedListNode <int> (p -> data) ;
+
+        nodesMap[p] = copy ; p = p -> next ;
+    }
+
+    LinkedListNode <int> *dummy = new LinkedListNode <int> (-1) ;  
+    LinkedListNode <int> *tail = dummy ;
+
+    p = head ;
+
+    while(p != NULL)
+    {
+        LinkedListNode <int> *copy = nodesMap[p] ;
+        
+        LinkedListNode <int> *randCopy = nodesMap[p -> random] ;
+
+        tail -> next = copy ; tail = copy ;
+
+        copy -> random = randCopy ;  
+
+        p = p -> next ;
+    }
+
+    return dummy -> next ;
+}
+
+
 // Time Complexity:  O(N)
 // Space Complexity: O(2 * N) [N for creating new nodes and N for storing all the deep copies inside our HashMap]

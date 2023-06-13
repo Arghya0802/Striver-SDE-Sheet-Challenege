@@ -4,8 +4,11 @@
 /* Approach:
 1. Similar to Merging Two LinkedLists but instead of two- we have been given the head of N sorted LinkedLists.
 2. We use recursion to merge only two and ask recursion to merge the rest of them. 
-
-PS: The approach was very simple, but in CodeStudio faced some error which was not present in the GFG compiler.
+3. Make sure we do the following for the code to work properly: 
+                         Node *nextNode = root -> next; // Store the nextNode, so that it doesn't get lost
+                         root -> next = NULL ; // Very important otherwise we would face error
+                         Node *curr = flatten(root) ; // Ask recursion to do rest of the task
+                         return mergeLL(root, curr) ; // Return the head of the Merged LinkedLists
 */
 
 /*

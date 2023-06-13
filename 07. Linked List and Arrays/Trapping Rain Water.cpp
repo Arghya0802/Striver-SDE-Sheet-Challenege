@@ -15,5 +15,44 @@ Approach 2 [Two-Pointers technique ]
 5. At the end, we return our res variable.
 */
 
+#include <bits/stdc++.h> 
+using ll = long long int ;
+
+long getTrappedWater(long arr[] , int n)
+{
+    ll res = 0 ;
+
+    int left = 0 ; int right = n - 1 ;
+
+    ll maxLeft = arr[0] ;  ll maxRight = arr[n - 1] ;
+
+    while(left <= right)
+    {
+        if(maxLeft <= maxRight)
+        {
+            ll water = maxLeft - arr[left] >= 0 ? maxLeft - arr[left] : 0 ;
+
+            res += water ;
+
+            if(maxLeft <= arr[left])  maxLeft = arr[left] ;
+
+            left++ ;
+        }
+
+        else
+        {
+            ll water = maxRight - arr[right] >= 0 ? maxRight - arr[right] : 0 ;
+
+            res += water ;
+
+            if(maxRight <= arr[right])  maxRight = arr[right] ;
+
+            right-- ;
+        }
+    }
+
+    return res ;
+}
+
 // Time Complexity:  O(N)
 // Space Complexity: O(1)

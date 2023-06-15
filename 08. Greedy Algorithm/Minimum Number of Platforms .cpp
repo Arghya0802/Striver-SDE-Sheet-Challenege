@@ -6,6 +6,7 @@
 2. We keep a pointer j = 0, and start our iteration from i = 1. MaxCnt = 1 and Cnt = 1 are also initialized.  
 3. For every arrival of the train, we check if any of the previous platforms might become vacant or not. We use a while loop for doing so and decrement our cnt by 1.
 4. At the exit of the while loop, we increment our cnt by 1 for the current platform and update our maxCnt as max(maxCnt, cnt).
+5. We should keep in mind that if arrival and departure times of two trains are same, we need to give them different platforms. That's why our while loop runs for dep[j] < arr[i]!!
 */
 
 int calculateMinPatforms(int at[], int dt[], int n) 

@@ -11,13 +11,15 @@
 
 void subsetSumEqualK(int ind , int n , int target , vector<int> &subset , vector<int> &nums , vector<vector<int>> &ans)
 {
-    if(ind >= n)
+    if(ind >= n) // Base Case
     {
+        // Pick only those subsets which are not empty and their sum equals Target
         if(target == 0 && !subset.empty() )  ans.push_back(subset) ;
         
         return ;
     }
-
+    
+    // Pick i-th Element
     target -= nums[ind] ;  subset.push_back(nums[ind]) ;
 
     subsetSumEqualK(ind + 1 ,  n,  target, subset, nums, ans) ; // Ask recursion to do rest of the task
@@ -32,9 +34,8 @@ void subsetSumEqualK(int ind , int n , int target , vector<int> &subset , vector
 
 vector<vector<int>> findSubsetsThatSumToK(vector<int> &arr, int n, int k)
 {
-
     vector<vector<int>> ans ;
-    vector<int> subset ;
+    vector<int> subset ; // To generate all the possible subsets 
 
     subsetSumEqualK(0 , n , k , subset , arr , ans) ;
 

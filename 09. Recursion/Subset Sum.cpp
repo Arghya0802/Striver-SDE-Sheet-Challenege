@@ -40,4 +40,4 @@ vector<int> subsetSum(vector<int> &num)
 }
 
 // Time Complexity:  O(2 ^ N + O(2 ^ N + Log(2 ^ N)) [For generating subsets and sorting them to get the required order]
-// Space Complexity: O(N) [For storing all the subset sums]
+// Space Complexity: O(N) [Ignoring Space used for 2D ans[][] vector ]

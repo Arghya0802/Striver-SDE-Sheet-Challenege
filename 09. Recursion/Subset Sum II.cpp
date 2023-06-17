@@ -33,7 +33,7 @@ void uniqueSubsets(int ind , int n , vector<int> &subset , vector<int> &nums , v
 
 vector<vector<int>> uniqueSubsets(int n, vector<int> &arr)
 {
-    sort(arr.begin() , arr.end() ) ;
+    sort(arr.begin() , arr.end() ) ; // We need to sort the given array arr[] so that we can skip all the Duplicate occurrences of any element easily 
 
     vector<vector<int>> ans ;  
 
@@ -41,7 +41,7 @@ vector<vector<int>> uniqueSubsets(int n, vector<int> &arr)
 
     uniqueSubsets(0 , n , subset , arr , ans) ;
 
-    sort(ans.begin() , ans.end() ) ;
+    sort(ans.begin() , ans.end() ) ; // ans[][] vector is sorted as per the problem statement
     
     return ans ;
 }

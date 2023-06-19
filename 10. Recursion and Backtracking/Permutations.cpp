@@ -19,11 +19,11 @@ void generatePemutations(int ind , int n , string &s , vector<string> &ans)
 
     for(int i = ind ; i < n ; i++)
     {
-        swap(s[ind] , s[i]) ;
+        swap(s[ind] , s[i]) ; // Generate one possible permutation
 
-        generatePemutations(ind + 1 , n , s , ans) ;
+        generatePemutations(ind + 1 , n , s , ans) ; // Ask recursion to do rest of the task
 
-        swap(s[ind] , s[i]) ;
+        swap(s[ind] , s[i]) ; // Backtrack and undo the change
     }
 
     return ;

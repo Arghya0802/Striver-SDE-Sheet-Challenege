@@ -1,4 +1,4 @@
-// Interview Bit:  https://www.interviewbit.com/problems/matrix-median/
+// Interview Bit Link:  https://www.interviewbit.com/problems/matrix-median/
 // --------------------------------------------------------------------
 
 /* Approach

@@ -1,4 +1,4 @@
-// LeetCode: https://leetcode.com/problems/single-element-in-a-sorted-array/description/
+// LeetCode Link: https://leetcode.com/problems/single-element-in-a-sorted-array/description/
 // ------------------------------------------------------------------------------------
 
 /* Approach

@@ -37,9 +37,9 @@ int diameterOfBinaryTree(TreeNode<int> *root)
 {
 	int ans = 0 ;
 
-    maxDepth(root , ans) ;
+    	maxDepth(root , ans) ;
 
-    return ans ;
+    	return ans ;
 }
 
 // Time Complexity:  O(N)

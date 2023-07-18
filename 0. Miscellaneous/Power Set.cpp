@@ -20,15 +20,27 @@ void generateAllSubsets(int ind , int n , vector<int> &subset , vector<int> &num
 
 vector<vector<int>> pwset(vector<int> &v)
 {
-    int n = v.size() ;
+    int n = v.size() ;  int len = 1 << n ;
 
-    vector<int> subset ;  
-    vector<vector<int>> ans ;
+    vector<vector<int>> ans ;  
 
-    generateAllSubsets(0 , n , subset , v , ans) ;
+    for(int num = 0 ; num < len ; num++)
+    {
+        vector<int> subseq ;
+
+        for(int i = 0 ; i < n ; i++)
+        {
+            if(num & (1 << i) )  subseq.push_back(v[i]) ;
+        }
+
+        ans.push_back(subseq) ;
+    }
 
     return ans ;
 }
 
-// Time Complexity:  O(2 ^ N)
-// Space Complexity: O(N) [Considering height of recursive tree only]
+// Time Complexity for Recursion:  O(2 ^ N)
+// Space Complexity for Recursion: O(N) [Recursive Stack Space]
+
+// Time Complexity using Bit Manipulation:  O(2 ^ N * N)
+// Space Complexity using Bit Manipulation: O(1) [We are not considering space required to store 2D ans[][] vector]
